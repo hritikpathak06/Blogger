@@ -78,7 +78,7 @@ const Login = () => {
           </Button>
           <h1 className="w-full text-end mt-2">
             Click here to
-            <Link href="/register">
+            <Link href="/signup">
               <span className="text-blue-500"> Register</span>
             </Link>
           </h1>

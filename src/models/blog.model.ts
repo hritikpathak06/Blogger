@@ -3,9 +3,9 @@ import mongoose from "mongoose";
 const blog_schema = new mongoose.Schema(
   {
     userId: {
-      // type: mongoose.Schema.Types.ObjectId,
-      // ref: "User",
-      type:String,
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      // type:String,
     },
     title: {
       type: String,

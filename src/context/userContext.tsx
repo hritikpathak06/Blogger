@@ -3,7 +3,7 @@
 import { login, logout } from "@/store/authSlice";
 import axios from "axios";
 import { useRouter } from "next/navigation";
-import React, { createContext, useEffect } from "react";
+import React, { createContext, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 export const CurrentUser: any = createContext(null);
 
@@ -13,17 +13,17 @@ export const CurrentUserProvider = ({
   children: React.ReactNode;
 }) => {
   const [isAuth, setIsAuth] = React.useState(false);
+  const [loggedInUser, setLoggedInUser] = useState();
   const router = useRouter();
   const dispatch = useDispatch();
   const getCurrentUser = async () => {
     try {
       const res = await axios.get("/api/me");
-
       console.log("");
-      //   console.log("in contect====>", res);
       if (res.data) {
-        dispatch(login(res.data[0]));
-        console.log("res.data===>", res.data[0]);
+        dispatch(login(res.data));
+        setLoggedInUser(res.data);
+        console.log("res.data===>", res.data);
         setIsAuth(true);
       }
     } catch (error) {
@@ -36,7 +36,7 @@ export const CurrentUserProvider = ({
     getCurrentUser();
   }, []);
   return (
-    <CurrentUser.Provider value={{ isAuth, setIsAuth }}>
+    <CurrentUser.Provider value={{ isAuth, setIsAuth, loggedInUser }}>
       {children}
     </CurrentUser.Provider>
   );

@@ -3,12 +3,6 @@ import jwt, { JwtPayload } from "jsonwebtoken";
 import mongoose from "mongoose";
 import { NextRequest } from "next/server";
 
-/**
- * Middleware to authenticate a user based on a JWT token.
- *
- * @param {NextRequest} request - The incoming request object (includes headers and cookies).
- * @returns {Promise<[User | null, Error | null]>} - A promise that resolves to a user object if found, or an error if any occurred.
- */
 export const authMiddleware = async (request: NextRequest): Promise<any> => {
   try {
     let token: string | undefined;
@@ -21,7 +15,7 @@ export const authMiddleware = async (request: NextRequest): Promise<any> => {
     }
 
     if (!token) {
-      return [null, new Error("No token provided")];
+      throw new Error("No token provided");
     }
 
     // Verify and decode the JWT token
@@ -31,7 +25,7 @@ export const authMiddleware = async (request: NextRequest): Promise<any> => {
     ) as JwtPayload;
 
     if (!decoded || !("user_id" in decoded)) {
-      return [null, new Error("Invalid token")];
+      throw new Error("Invalid token");
     }
 
     // Get the user ID from the token
@@ -43,13 +37,13 @@ export const authMiddleware = async (request: NextRequest): Promise<any> => {
     }).select("-password"); // Omit the password field from the user object
 
     if (!user) {
-      return [null, new Error("User not found")];
+      throw new Error("User Not Found");
     }
 
     // If the user is found, return the user object
-    return [user, null];
+    return user;
   } catch (error) {
     // Handle any errors during the process
-    return [null, error as Error];
+    throw error;
   }
 };
