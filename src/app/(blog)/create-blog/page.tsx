@@ -5,7 +5,7 @@ const page = () => {
 
 
   return (
-    <div className=" flex flex-col items-center justify-center bg-neutral-800">
+    <div className="  flex flex-col items-center justify-center bg-neutral-800">
       <div className=" w-[80%]">
         <BlogForm/>
       </div>
