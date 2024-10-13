@@ -21,7 +21,7 @@ export const CurrentUserProvider = ({
       const res = await axios.get("/api/me");
       console.log("");
       if (res.data) {
-        dispatch(login(res.data));
+        // dispatch(login(res.data));
         setLoggedInUser(res.data);
         console.log("res.data===>", res.data);
         setIsAuth(true);

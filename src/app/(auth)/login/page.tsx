@@ -1,7 +1,6 @@
 import React from "react";
 import SignUpLogo from "@/assets/signup-logo.png";
 import Image from "next/image";
-import Register from "@/components/client/Auth/Register";
 import Login from "@/components/client/Auth/Login";
 
 const page = () => {

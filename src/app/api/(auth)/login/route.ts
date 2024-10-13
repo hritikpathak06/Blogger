@@ -33,7 +33,6 @@ export const POST = async (req: NextRequest) => {
       }
     );
 
-    user.password = null;
 
     const response = NextResponse.json(
       { msg: "login successful", user },

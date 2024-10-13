@@ -13,7 +13,6 @@ const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
-
   const router = useRouter();
 
   const handleLogout = async () => {
@@ -26,20 +25,6 @@ const Navbar = () => {
       toast.error("Something went wrong");
     }
   };
-
-  const NavLink = ({
-    href,
-    children,
-  }: {
-    href: string;
-    children: React.ReactNode;
-  }) => (
-    <Link href={href}>
-      <span className="text-gray-800 hover:text-gray-600 font-medium block py-2">
-        {children}
-      </span>
-    </Link>
-  );
 
   return (
     <nav className="bg-neutral-800 text-white shadow-lg shadow-white border-b">
@@ -55,21 +40,25 @@ const Navbar = () => {
           <div className="hidden md:flex items-center space-x-4">
             {loggedInUser?._id ? (
               <>
-                <NavLink href="/my-profile">
-                  <span className="text-white">Profile</span>
-                </NavLink>
+                <Link href="/my-profile">
+                  <span className="text-white hover:text-gray-400 font-medium block py-2">
+                    Profile
+                  </span>
+                </Link>
                 <Button onClick={handleLogout}>Logout</Button>
               </>
             ) : (
-              <NavLink href="/login">
-                <span className="text-white">Login</span>
-              </NavLink>
+              <Link href="/login">
+                <span className="text-white hover:text-gray-400 font-medium block py-2">
+                  Login
+                </span>
+              </Link>
             )}
-            <NavLink href="/create-blog">
+            <Link href="/create-blog">
               <span className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition">
                 Create Blog
               </span>
-            </NavLink>
+            </Link>
           </div>
           <div className="md:hidden">
             <button onClick={toggleMenu} className="text-gray-800">
@@ -84,23 +73,27 @@ const Navbar = () => {
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
             {loggedInUser?._id ? (
               <>
-                <NavLink href="/my-profile">
-                  <span className="text-white">Profile</span>
-                </NavLink>
+                <Link href="/my-profile">
+                  <span className="text-white hover:text-gray-400 font-medium block py-2">
+                    Profile
+                  </span>
+                </Link>
                 <Button className="w-full text-left" onClick={handleLogout}>
                   Logout
                 </Button>
               </>
             ) : (
-              <NavLink href="/login">
-                  <span className="text-white">Login</span>
-              </NavLink>
+              <Link href="/login">
+                <span className="text-white hover:text-gray-400 font-medium block py-2">
+                  Login
+                </span>
+              </Link>
             )}
-            <NavLink href="/create-blog">
+            <Link href="/create-blog">
               <span className="block px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition">
                 Create Blog
               </span>
-            </NavLink>
+            </Link>
           </div>
         </div>
       )}

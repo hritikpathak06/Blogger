@@ -28,7 +28,7 @@ const Register = () => {
         email,
         password,
       });
-      toast.success("Email Sent Successfully");
+      toast.success("Registered Successfully");
       console.log("Registration successful", response.data);
       setSuccess(true);
       router.push("/login");
