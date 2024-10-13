@@ -6,7 +6,6 @@ export async function GET(req: NextRequest) {
   try {
     const user = await authMiddleware(req);
 
-
     const blogs = await Blog.find({
       userId: user._id,
     })

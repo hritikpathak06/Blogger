@@ -23,9 +23,9 @@ function page() {
 
   return (
     <div className=" pt-10 min-h-screen w-full">
-      <div className=" flex items-center gap-10 flex-wrap justify-start w-[80%] mx-auto">
+      <div className=" md:flex-row flex flex-col items-center gap-10 flex-wrap justify-start w-[80%] mx-auto">
         {blogs?.map((data: any, index: any) => (
-          <div className=" w-[30%] flex items-center justify-center flex-col" key={index}>
+          <div className=" md:w-[30%] w-full flex items-center justify-center flex-col" key={index}>
             <BlogCard data={data} />
           </div>
         ))}
