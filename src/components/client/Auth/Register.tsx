@@ -66,7 +66,7 @@ const Register = () => {
             id="orgName"
             value={userName}
             onChange={(e) => setUserName(e.target.value)}
-            className="w-full px-3 py-2 border rounded"
+            className="w-full px-3 py-2 border rounded text-black"
             required
           />
         </div>
@@ -80,7 +80,7 @@ const Register = () => {
             id="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className={`w-full px-3 py-2 border rounded ${
+            className={`w-full px-3 py-2 border rounded text-black ${
               !isEmailValid(email) && email ? "border-red-500" : ""
             }`}
             required
@@ -100,7 +100,7 @@ const Register = () => {
             id="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className={`w-full px-3 py-2 border rounded ${
+            className={`w-full px-3 py-2 border rounded text-black ${
               !isPasswordStrong(password) && password ? "border-red-500" : ""
             }`}
             required

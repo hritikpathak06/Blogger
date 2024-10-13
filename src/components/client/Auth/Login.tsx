@@ -56,7 +56,7 @@ const Login = () => {
               id="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className={`w-full px-3 py-2 border rounded `}
+              className={`w-full px-3 py-2 border rounded text-black `}
               required
             />
             <div className="mb-4">
@@ -68,7 +68,7 @@ const Login = () => {
                 id="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className={`w-full px-3 py-2 border rounded `}
+                className={`w-full px-3 py-2 border rounded text-black `}
                 required
               />
             </div>

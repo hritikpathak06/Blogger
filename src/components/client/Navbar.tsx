@@ -42,7 +42,7 @@ const Navbar = () => {
   );
 
   return (
-    <nav className="bg-neutral-800 text-white shadow-md">
+    <nav className="bg-neutral-800 text-white shadow-lg shadow-white border-b">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex-shrink-0">
@@ -61,7 +61,9 @@ const Navbar = () => {
                 <Button onClick={handleLogout}>Logout</Button>
               </>
             ) : (
-              <NavLink href="/login">Login</NavLink>
+              <NavLink href="/login">
+                <span className="text-white">Login</span>
+              </NavLink>
             )}
             <NavLink href="/create-blog">
               <span className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition">
@@ -90,7 +92,9 @@ const Navbar = () => {
                 </Button>
               </>
             ) : (
-              <NavLink href="/login">Login</NavLink>
+              <NavLink href="/login">
+                  <span className="text-white">Login</span>
+              </NavLink>
             )}
             <NavLink href="/create-blog">
               <span className="block px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition">

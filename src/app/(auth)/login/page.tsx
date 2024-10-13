@@ -7,7 +7,7 @@ import Login from "@/components/client/Auth/Login";
 const page = () => {
   return (
     <>
-      <div className="min-h-screen flex flex-col lg:flex-row">
+      <div className="min-h-screen flex flex-col lg:flex-row bg-neutral-800 text-gray-200 overflow-hidden">
         <div className="hidden lg:block w-1/2 h-screen">
           <Image
             src={SignUpLogo}
