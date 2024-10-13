@@ -9,15 +9,26 @@ import {
 } from "@/components/ui/card";
 import Image from "next/image";
 import Link from "next/link";
+import axios from "axios";
+import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
 const BlogCard = ({ data, admin }: any) => {
-  const handleDelete = () => {
-    console.log(`Delete blog with ID: ${data._id}`);
+
+  const router = useRouter();
+
+  const handleDelete = async () => {
+    try {
+      const res = await axios.delete(`/api/blog/${data._id}`);
+      toast.success("Blog Deleted Successfully");
+      window.location.reload();
+    } catch (error) {
+      toast.error("Somethign went wrong");
+    }
   };
 
-  // Function to handle update action
   const handleUpdate = () => {
-    console.log(`Update blog with ID: ${data._id}`);
+    router.push(`/update/${data._id}`)
   };
 
   return (
@@ -44,7 +55,7 @@ const BlogCard = ({ data, admin }: any) => {
             Author:{" "}
             <span className="text-xl font-bold">{data.userId?.userName}</span>
           </p>
-          {admin==="admin" && ( // Only show buttons if admin is true
+          {admin === "admin" && ( // Only show buttons if admin is true
             <div>
               <button
                 onClick={handleUpdate}

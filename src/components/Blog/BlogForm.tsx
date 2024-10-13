@@ -11,6 +11,7 @@ const BlogForm = () => {
   const [description, setDescription] = useState("");
   const [image, setImage] = useState<File | null>(null);
   const [imagePreview, setImagePreview] = useState<string | null>(null);
+  const [loading, setLoading] = useState<boolean>(false);
 
   const { loggedInUser }: any = useCurrentUser();
 
@@ -41,10 +42,11 @@ const BlogForm = () => {
     formData.append("title", title);
     formData.append("subtitle", subtitle);
     formData.append("description", description);
-    formData.append("image", image); 
+    formData.append("image", image);
     formData.append("userId", loggedInUser._id);
 
     try {
+      setLoading(true);
       const { data } = await axios.post("/api/create-blog", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
@@ -53,9 +55,11 @@ const BlogForm = () => {
       // console.log("Blog created successfully: ", data);
       toast.success("Blog Created Succesfully!!");
       router.push("/my-profile");
+      setLoading(false);
     } catch (error) {
       toast.error("Error Creating the blog post");
       console.error("Error creating blog post: ", error);
+      setLoading(false);
     }
   };
 
@@ -156,7 +160,7 @@ const BlogForm = () => {
               type="submit"
               className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
             >
-              Create Blog Post
+              {loading ? "Creating" : "  Create Blog Post"}
             </button>
           </div>
         </form>

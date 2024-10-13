@@ -32,6 +32,7 @@ const Login = () => {
       });
       console.log("Logged In Successfull", response.data);
       setSuccess(true);
+      window.location.href = "/";
       router.push("/my-profile");
     } catch (error: any) {
       toast.error(error.response.data.msg || "An error occurred during login");
